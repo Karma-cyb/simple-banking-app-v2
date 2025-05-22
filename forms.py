@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, FloatField, RadioField, SelectField, HiddenField
-from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, NumberRange, Optional
+from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, NumberRange, Optional, Length, Regexp
 from models import User
 
 class LoginForm(FlaskForm):
@@ -14,7 +14,11 @@ class LoginForm(FlaskForm):
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[
+        DataRequired(),
+        Length(min=8, message="Password must be at least 8 characters."),
+        Regexp(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).+$', message="Password must contain uppercase, lowercase, and a digit.")
+    ])
     password2 = PasswordField(
         'Repeat Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Register')
@@ -156,4 +160,4 @@ class ConfirmTransferForm(FlaskForm):
     recipient_account = HiddenField('Recipient Account Number')
     amount = HiddenField('Amount')
     transfer_type = HiddenField('Transfer Type')
-    submit = SubmitField('Confirm Transfer') 
+    submit = SubmitField('Confirm Transfer')

@@ -6,7 +6,7 @@
         <h2 class="mb-4">Account Summary</h2>
         
         <!-- Balance Card -->
-        <div class="card balance-card mb-4">
+        <div class="card balance-card neumorph mb-4">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
@@ -22,7 +22,7 @@
         </div>
         
         <!-- Transaction History -->
-        <div class="card">
+        <div class="card neumorph">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0">Recent Transactions</h5>
             </div>
@@ -31,7 +31,7 @@
                     {% for transaction in transactions %}
                         {% if transaction.sender_id == current_user.id %}
                             {% if transaction.transaction_type == 'deposit' and current_user.is_admin %}
-                            <div class="transaction-item">
+                            <div class="transaction-item neumorph">
                                 <div class="d-flex justify-content-between">
                                     <div>
                                         <strong>Admin Deposit to:</strong> {{ transaction.receiver.username }} ({{ transaction.receiver.account_number }})
@@ -44,7 +44,7 @@
                                 </div>
                             </div>
                             {% else %}
-                            <div class="transaction-item sent">
+                            <div class="transaction-item neumorph sent">
                                 <div class="d-flex justify-content-between">
                                     <div>
                                         <strong>Sent to:</strong> {{ transaction.receiver.username }} ({{ transaction.receiver.account_number }})
@@ -57,7 +57,7 @@
                             </div>
                             {% endif %}
                         {% else %}
-                            <div class="transaction-item received">
+                            <div class="transaction-item received neumorph">
                                 <div class="d-flex justify-content-between">
                                     <div>
                                         {% if transaction.transaction_type == 'deposit' %}
