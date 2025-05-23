@@ -53,11 +53,20 @@ def create_app():
 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+    app.config['SESSION_COOKIE_SECURE'] = True
+    app.config['SESSION_COOKIE_HTTPONLY'] = True
+    app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
+
     # Initialize extensions with app
     db.init_app(app)
     login_manager.init_app(app)
     bcrypt.init_app(app)
     limiter.init_app(app)
+    
+    # Enforce HTTPS and set security headers in production
+    if os.environ.get('FLASK_ENV') == 'production':
+        from flask_talisman import Talisman
+        Talisman(app, content_security_policy=None)
     
     # Register custom error handler for rate limiting
     @app.errorhandler(RateLimitExceeded)
@@ -113,4 +122,4 @@ if __name__ == '__main__':
     
     with app.app_context():
         db.create_all()
-    app.run(debug=True) 
+    app.run(debug=True)
