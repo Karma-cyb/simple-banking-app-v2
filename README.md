@@ -1,7 +1,44 @@
-# Simple Banking App
+# Simple Banking App v2
 
-A user-friendly and responsive Flask-based banking application designed for deployment on PythonAnywhere. This application allows users to create accounts, perform simulated money transfers between accounts, view transaction history, and securely manage their credentials.
+## Group Members
+- Member 1: Eugene Aquilino
+- Member 2: John Michael Casila
+- Member 3: Mary France San Andres
 
+<<<<<<< main
+---
+
+## Live Web Application
+
+[https://PSACS.pythonanywhere.com](https://PSACS.pythonanywhere.com)
+
+---
+
+## Presentation Links
+
+- Part 1: 
+- Part 2: 
+
+---
+
+## Introduction
+
+Simple Banking App v2 is a user-friendly, secure, and responsive Flask-based banking application. Originally provided as a template by our instructor, our group enhanced the platform with modern security best practices and a Neumorphic (Soft UI) design. The app allows users to create accounts, perform simulated money transfers, view transaction history, and securely manage credentials.
+
+---
+
+## Objectives
+
+- Assess the security of the original banking application.
+- Identify and document vulnerabilities.
+- Implement robust security improvements.
+- Modernize the user interface for usability and accessibility.
+- Demonstrate secure coding and deployment practices.
+
+---
+
+## Original Application Features
+=======
 ## Introduction
 This project focuses on enhancing the security of an existing web-based banking application called "Simple Banking App". We will collaboratively assess the application for potential vulnerabilities, implement security improvements based on secure development principles, and thoroughly document our findings and the implemented solutions. This project aims to demonstrate our understanding of web application security, vulnerability assessment techniques, and secure coding practices.
 
@@ -15,6 +52,7 @@ This project focuses on enhancing the security of an existing web-based banking 
 * Deploy the improved application to a live web hosting platform.
 
 ## Features
+>>>>>>> main
 
 - **User Authentication**
   - Secure login with username/password
