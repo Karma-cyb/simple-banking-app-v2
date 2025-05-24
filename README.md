@@ -1,3 +1,15 @@
+# PlatformSecurity-FinalProject-AquilinoCasilaSanAndres
+
+# Web Banking Application Security Enhancement
+### CSEC 322 - Platform Security
+**Date:** May 2025
+---
+
+## 👥 Group Members
+- Eugene Aquilino – Programmer
+- John Michael Casila – Programmer
+- Mary France San Andres – Documentation, File Support
+
 # Simple Banking App
 
 A user-friendly and responsive Flask-based banking application designed for deployment on PythonAnywhere. This application allows users to create accounts, perform simulated money transfers between accounts, view transaction history, and securely manage their credentials.
@@ -60,72 +72,73 @@ This project focuses on enhancing the security of an existing web-based banking 
   - CSRF protection for all forms
 
 ## Security Assessment Findings: Vulnerabilities identified in the original application 
-Based on the security enhancements that have been integrated, it can be inferred that the original application likely exhibited several security weaknesses. These potential vulnerabilities included:
 
-*Insecure Password Storage: Passwords might have been stored in plain text or using weak hashing algorithms, leaving them vulnerable to exposure.
+* Insecure Password Storage: Passwords might have been stored in plain text or using weak hashing algorithms, leaving them vulnerable to exposure.
 
-*SQL Injection Vulnerabilities: The application was likely susceptible to SQL injection attacks due to improper sanitization or parameterization of database queries.
+* SQL Injection Vulnerabilities: The application was likely susceptible to SQL injection attacks due to improper sanitization or parameterization of database queries.
 
-*Weak Input Validation: Insufficient validation of user inputs could have led to various attacks, including injection attacks, cross-site scripting (XSS), or data integrity issues.
+* Weak Input Validation: Insufficient validation of user inputs could have led to various attacks, including injection attacks, cross-site scripting (XSS), or data integrity issues.
 
-*Inadequate Authentication and Authorization: Access controls might have been rudimentary, lacking robust role-based permissions or proper administrative oversight for user accounts.
+* Inadequate Authentication and Authorization: Access controls might have been rudimentary, lacking robust role-based permissions or proper administrative oversight for user accounts.
 
-*Missing CSRF Protection: The absence of Cross-Site Request Forgery (CSRF) protection could have exposed users to unauthorized actions.
+* Missing CSRF Protection: The absence of Cross-Site Request Forgery (CSRF) protection could have exposed users to unauthorized actions.
 
-*Insecure Communication: Data transmission between the client and server might have occurred over unencrypted channels (HTTP), compromising data confidentiality.
+* Insecure Communication: Data transmission between the client and server might have occurred over unencrypted channels (HTTP), compromising data confidentiality.
 
-*Outdated Dependencies: The application could have relied on outdated third-party libraries and frameworks with known security vulnerabilities.
+* Outdated Dependencies: The application could have relied on outdated third-party libraries and frameworks with known security vulnerabilities.
 
-*Lack of Rate Limiting: Without rate limiting, the application would have been susceptible to brute-force attacks on login or registration endpoints.
+* Lack of Rate Limiting: Without rate limiting, the application would have been susceptible to brute-force attacks on login or registration endpoints.
 
-*Exposure of Sensitive Files: Configuration files containing sensitive information (like database credentials) might have been inadvertently included in public repositories.
+* Exposure of Sensitive Files: Configuration files containing sensitive information (like database credentials) might have been inadvertently included in public repositories.
 
-##Security Improvements Implemented: Detailed Description
-The SimpleBankApp has undergone significant security hardening, incorporating industry best practices and specific enhancements across various layers:
+## Security Improvements Implemented: Detailed Description
 
-### Secure Data Storage
-*Password Hashing: All user passwords are now hashed using the bcrypt algorithm via Flask-Bcrypt before storage. This prevents passwords from being stored in plain text and significantly increases security against credential theft.
-*Environment Variables for Secrets: All sensitive credentials, such as database connection strings and secret keys, are loaded from a .env file. This file is explicitly excluded from version control using .gitignore to prevent accidental exposure of sensitive information.
-*SQL Injection Protection: By leveraging SQLAlchemy's Object Relational Mapper (ORM) and its inherent use of parameterized queries, the risk of SQL injection attacks is substantially mitigated.
-Input Validation
-*Server-Side Validation: All user inputs are rigorously validated on the server side using WTForms validators. This includes checks for required fields, correct email formats, and strong password policies, ensuring data integrity and preventing various injection attacks.
-*Client-Side Validation: HTML5 validation is enabled on all forms, providing immediate feedback to users and acting as a first line of defense against malformed input.
-*Unique Constraints: The database schema enforces unique constraints on usernames and emails, preventing the creation of duplicate accounts.
+***Secure Data Storage***
+* Password Hashing: All user passwords are now hashed using the bcrypt algorithm via Flask-Bcrypt before storage. This prevents passwords from being stored in plain text and significantly increases security against credential theft.
+* Environment Variables for Secrets: All sensitive credentials, such as database connection strings and secret keys, are loaded from a .env file. This file is explicitly excluded from version control using .gitignore to prevent accidental exposure of sensitive information.
+* SQL Injection Protection: By leveraging SQLAlchemy's Object Relational Mapper (ORM) and its inherent use of parameterized queries, the risk of SQL injection attacks is substantially mitigated.
+***Input Validation***
+* Server-Side Validation: All user inputs are rigorously validated on the server side using WTForms validators. This includes checks for required fields, correct email formats, and strong password policies, ensuring data integrity and preventing various injection attacks.
+* Client-Side Validation: HTML5 validation is enabled on all forms, providing immediate feedback to users and acting as a first line of defense against malformed input.
+* Unique Constraints: The database schema enforces unique constraints on usernames and emails, preventing the creation of duplicate accounts.
 
-### Authentication and Authorization
-*Robust Authentication: Flask-Login is used for secure user session management. User passwords are securely verified using bcrypt during the login process.
-*Account Approval Workflow: New user accounts must be approved by an administrator before they can gain access to the application, adding an extra layer of security and control.
-*Role-Based Access Control (RBAC): The application implements a clear RBAC model with three distinct roles: user, admin, and manager. Each role has specific permissions and access to different dashboards and functionalities.
-*Route Protection: Flask decorators, such as @login_required and custom role-checking decorators, are used to ensure that only authenticated and appropriately authorized users can access sensitive routes and features.
-### Session Management and CSRF Protection
-*Secure Session Handling: User sessions are securely managed, typically involving secure, HTTP-only, and expiring session cookies.
-*CSRF Protection: Mechanisms are in place to prevent Cross-Site Request Forgery (CSRF) attacks, ensuring that state-changing requests originate from legitimate users.
-### Error Handling and Output Encoding
-*Custom Error Pages: User-friendly custom error pages are provided, particularly for scenarios like exceeding rate limits, to improve user experience and prevent information disclosure.
-*Output Encoding: While not explicitly detailed, proper output encoding is typically implemented to prevent Cross-Site Scripting (XSS) vulnerabilities by sanitizing user-generated content before rendering it in the browser.
+***Authentication and Authorization***
+* Robust Authentication: Flask-Login is used for secure user session management. User passwords are securely verified using bcrypt during the login process.
+* Account Approval Workflow: New user accounts must be approved by an administrator before they can gain access to the application, adding an extra layer of security and control.
+* Role-Based Access Control (RBAC): The application implements a clear RBAC model with three distinct roles: user, admin, and manager. Each role has specific permissions and access to different dashboards and functionalities.
+* Route Protection: Flask decorators, such as @login_required and custom role-checking decorators, are used to ensure that only authenticated and appropriately authorized users can access sensitive routes and features.
+  
+***Session Management and CSRF Protection***
+* Secure Session Handling: User sessions are securely managed, typically involving secure, HTTP-only, and expiring session cookies.
+* CSRF Protection: Mechanisms are in place to prevent Cross-Site Request Forgery (CSRF) attacks, ensuring that state-changing requests originate from legitimate users.
+***Error Handling and Output Encoding***
+* Custom Error Pages: User-friendly custom error pages are provided, particularly for scenarios like exceeding rate limits, to improve user experience and prevent information disclosure.
+* Output Encoding: While not explicitly detailed, proper output encoding is typically implemented to prevent Cross-Site Scripting (XSS) vulnerabilities by sanitizing user-generated content before rendering it in the browser.
 Dependency Management
-*Pinned Dependencies: All project dependencies are meticulously listed and pinned to secure versions in requirements.txt, ensuring consistent and secure environments.
-*Regular Updates and Vulnerability Scanning: A proactive approach to dependency management is maintained through regular checks for outdated packages (pip list --outdated) and the integration of GitHub Dependabot for continuous vulnerability monitoring. All packages have been updated to their latest secure versions, and unused dependencies have been removed.
-### Rate Limiting
-*Flask-Limiter Integration: Flask-Limiter is employed to protect against brute-force attacks, denial-of-service (DoS), and general abuse.
-*Targeted Limits: Strict rate limits have been applied to critical endpoints such as login, registration, and money transfer functionalities.
-*Clear User Feedback: Users who exceed rate limits receive clear and informative custom error messages.
-### Secure Communication
-*HTTPS Enforcement: In production environments, Flask-Talisman is used to enforce HTTPS, ensuring that all client-server communication is encrypted and protected from eavesdropping.
-*Secure HTTP Headers: Flask-Talisman also sets a suite of secure HTTP headers (e.g., HSTS, CSP) to further enhance security.
-*Secure Cookies: All cookies are explicitly marked as "Secure" to prevent them from being transmitted over unencrypted channels.
+* Pinned Dependencies: All project dependencies are meticulously listed and pinned to secure versions in requirements.txt, ensuring consistent and secure environments.
+* Regular Updates and Vulnerability Scanning: A proactive approach to dependency management is maintained through regular checks for outdated packages (pip list --outdated) and the integration of GitHub Dependabot for continuous vulnerability monitoring. All packages have been updated to their latest secure versions, and unused dependencies have been removed.
+  
+***Rate Limiting***
+* Flask-Limiter Integration: Flask-Limiter is employed to protect against brute-force attacks, denial-of-service (DoS), and general abuse.
+* Targeted Limits: Strict rate limits have been applied to critical endpoints such as login, registration, and money transfer functionalities.
+* Clear User Feedback: Users who exceed rate limits receive clear and informative custom error messages.
+  
+***Secure Communication***
+* HTTPS Enforcement: In production environments, Flask-Talisman is used to enforce HTTPS, ensuring that all client-server communication is encrypted and protected from eavesdropping.
+* Secure HTTP Headers: Flask-Talisman also sets a suite of secure HTTP headers (e.g., HSTS, CSP) to further enhance security.
+* Secure Cookies: All cookies are explicitly marked as "Secure" to prevent them from being transmitted over unencrypted channels.
 
-### GitHub Workflow
-*Version Control and Collaboration: GitHub is utilized for robust version control, efficient issue tracking, and collaborative code review.
-*Pull Request Workflow: All code changes are implemented through a pull request (PR) workflow, requiring code review and approval before merging into the main branch. This promotes code quality and helps identify potential security issues early.
-*Sensitive File Exclusion: The .env file and other sensitive configuration files are strictly excluded from the repository using .gitignore, preventing accidental exposure of secrets.
+***GitHub Workflow***
+* Version Control and Collaboration: GitHub is utilized for robust version control, efficient issue tracking, and collaborative code review.
+* Pull Request Workflow: All code changes are implemented through a pull request (PR) workflow, requiring code review and approval before merging into the main branch. This promotes code quality and helps identify potential security issues early.
+* Sensitive File Exclusion: The .env file and other sensitive configuration files are strictly excluded from the repository using .gitignore, preventing accidental exposure of secrets.
 
 ## Penetration Testing Report: Summary of Vulnerabilities Identified, Exploitation Steps, and Recommendations
 
-*Summary of Findings: An overview of the overall security posture and a count of critical, high, medium, and low-risk vulnerabilities.
-*Detailed Vulnerability Descriptions: For each vulnerability, a clear description, its potential impact, and its Common Weakness Enumeration (CWE) ID.
-*Exploitation Steps: Step-by-step instructions on how to reproduce the vulnerability, demonstrating its exploitability.
-*Recommendations: Specific, actionable advice for remediation, including code changes, configuration updates, or procedural adjustments.
+* Summary of Findings: An overview of the overall security posture and a count of critical, high, medium, and low-risk vulnerabilities.
+* Detailed Vulnerability Descriptions: For each vulnerability, a clear description, its potential impact, and its Common Weakness Enumeration (CWE) ID.
+* Exploitation Steps: Step-by-step instructions on how to reproduce the vulnerability, demonstrating its exploitability.
+* Recommendations: Specific, actionable advice for remediation, including code changes, configuration updates, or procedural adjustments.
 
 ## Getting Started
 
