@@ -16,8 +16,8 @@
 
 ## Presentation Links
 
-- Part 1: 
-- Part 2: 
+- Part 1: https://youtu.be/0chPKJP3sgw
+- Part 2: https://youtu.be/Z521U5fK3os
 
 ---
 
