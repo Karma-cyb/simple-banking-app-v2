@@ -1,3 +1,15 @@
+# PlatformSecurity-FinalProject-AquilinoCasilaSanAndres
+
+# Web Banking Application Security Enhancement
+### CSEC 322 - Platform Security
+**Date:** May 2025
+---
+
+## 👥 Group Members
+- Eugene Aquilino – Frontend
+- John Michael Casila – Backend
+- Mary France San Andres – Documentation, File Support
+
 # Simple Banking App
 
 A user-friendly and responsive Flask-based banking application designed for deployment on PythonAnywhere. This application allows users to create accounts, perform simulated money transfers between accounts, view transaction history, and securely manage their credentials.
@@ -209,7 +221,7 @@ Dependency Management
 
 ## Deploying to PythonAnywhere
 
-1. Create a PythonAnywhere account at [www.pythonanywhere.com](https://www.pythonanywhere.com)
+1. Create a PythonAnywhere account at [https://psacs.pythonanywhere.com/login?next=%2F%3Ffbclid%3DIwY2xjawKeyVdleHRuA2FlbQIxMABicmlkETFJNFpjM081eXVGcDZlTEptAR7z8W8h0A455jcEu3O-YtKwPO9a8FrvNum2viY-deTeiPb_tp4Le-g7gIgZ6Q_aem_yZ-Yb_dUL0W90gQqyHEqUQ)
 
 2. Upload your code using Git:
    ```
